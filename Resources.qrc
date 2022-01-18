@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Recursos/Logo Universidad.png</file>
+    </qresource>
+</RCC>
