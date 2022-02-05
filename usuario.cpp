@@ -30,18 +30,19 @@ void Usuario::setClave(const QString &newClave)
 
 void Usuario::descifrado()
 {
-    string clave=m_clave.toStdString();
+    std::string clave=m_clave.toStdString();
+    qDebug()<<m_clave;
     for(int i=0;i<m_clave.length();i++){
-        if(clave[i]==90){
-            clave[i]=65;
+        if(clave[i]==65){
+            clave[i]=90;
         }
-        else if(clave[i]==122){
-            clave[i]=97;
+        else if(clave[i]==97){
+            clave[i]=122;
         }
         else{
             clave[i]=clave[i]-1;
         }
     }
     m_clave=QString::fromStdString(clave);
-qDebug()<<m_clave;
+    qDebug()<<m_clave;
 }

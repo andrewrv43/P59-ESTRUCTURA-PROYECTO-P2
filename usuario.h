@@ -4,8 +4,7 @@
 #include <QObject>
 #include <QDebug>
 #include <string>
-#include <iostream>
-using namespace std;
+
 class Usuario
 {
 

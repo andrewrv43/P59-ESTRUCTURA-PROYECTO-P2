@@ -14,7 +14,7 @@ Login::Login(QWidget *parent)
     archivo.setFileName(nombre);
     archivo.open(QIODevice::ReadOnly | QIODevice::Text);
     if(!archivo.isOpen()){
-       qDebug()<<"ERROR";
+        qDebug()<<"ERROR";
         return;
     };
     QString User, Password;
@@ -39,16 +39,22 @@ Login::~Login()
 
 void Login::on_btnLogin_released()
 {
-    bool correcto=false;
+    bool correcto=false;//CAMBIAR PARA QUE FUNCIONE BIEN DEBE ESTAR EN FALSE
     for(int i=0;i<m_usuario.size();i++){
         if(ui->inUsuario->text()==m_usuario.at(i)->user()&&ui->inPassword->text()==m_usuario.at(i)->clave()){
-            qDebug()<<"lo logramos hp xd";
             correcto=true;
         }
     }
     if(!correcto){
         QMessageBox::warning(this,"DATOS INCORRECTOS","INGRESE LOS DATOS NUEVAMENTE");
         limpiar();
+        return;
+    }
+    else{
+        QMainWindow::hide();
+        IngresoDeNotas *w=new IngresoDeNotas(this);
+        w->show();
+
     }
 
 }
@@ -58,4 +64,7 @@ void Login::limpiar()
     ui->inPassword->clear();
     ui->inUsuario->clear();
 }
+
+
+
 
