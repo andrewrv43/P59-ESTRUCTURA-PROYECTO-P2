@@ -131,6 +131,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QPushButton" name="btnLineaPromedio">
+            <property name="text">
+             <string>Dibujar Promedio</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>

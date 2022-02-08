@@ -9,6 +9,7 @@ IngresoDeNotas::IngresoDeNotas(QWidget *parent) :
     QStringList cabecera={"Nombre","Nota"};
     ui->outDetalle->setColumnCount(2);
     ui->outDetalle->setHorizontalHeaderLabels(cabecera);
+
     ancho=700;
     alto=700;
     contador=0;
@@ -61,7 +62,7 @@ void IngresoDeNotas::painterz()
     painter.drawText((ancho/2)-15,15,"GRÁFICO DE NOTAS");
     pen.setColor(Qt::black);
     painter.setPen(pen);
-    //eje y
+    //eje y datos
     painter.drawText(10,364,"50--");
     painter.drawText(6,25,"100--");
     painter.drawText(13,683,"0--");
@@ -154,5 +155,25 @@ void IngresoDeNotas::on_actionGuardar_grafico_triggered()
         else
             QMessageBox::warning(this,"Guardar imagen","No se pudo guardar el archivo");
     }
+}
+
+
+void IngresoDeNotas::on_btnLineaPromedio_released()
+{
+    float notas=0;
+    foreach(Estudiante *a,m_estudiantes){
+    notas+=a->getNota();
+    }
+    notas/=m_estudiantes.length();
+    pen.setColor(Qt::black);
+    painter.setPen(pen);
+    int pos=-((notas*680)/100);
+    if(notas>10){
+        pos+=20;
+    }
+    painter.drawText(6,pos+alto+18,QString::number(notas,'f',1));
+    painter.drawLine(6,pos+alto+20,680,pos+alto+20);
+
+ui->outGrafo->setPixmap(pixmap);
 }
 

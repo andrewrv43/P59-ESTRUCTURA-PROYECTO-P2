@@ -30,6 +30,8 @@ private slots:
 
     void on_actionGuardar_grafico_triggered();
 
+    void on_btnLineaPromedio_released();
+
 private:
     void pruebadebarras();
     Ui::IngresoDeNotas *ui;
