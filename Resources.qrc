@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>Recursos/Logo Universidad.png</file>
+        <file>Recursos/klipartz.com (3).png</file>
+        <file>ingresodenotas_ca.qm</file>
+        <file>ingresodenotas_en.qm</file>
     </qresource>
 </RCC>

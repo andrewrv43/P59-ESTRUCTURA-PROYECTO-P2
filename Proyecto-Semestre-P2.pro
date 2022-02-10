@@ -25,6 +25,10 @@ FORMS += \
     ingresodenotas.ui \
     login.ui
 
+TRANSLATIONS += \
+   ingresodenotas_en.ts \
+   ingresodenotas_ca.ts
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
