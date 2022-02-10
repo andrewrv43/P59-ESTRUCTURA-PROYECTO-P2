@@ -6,15 +6,22 @@ Login::Login(QWidget *parent)
     , ui(new Ui::Login)
 {
     ui->setupUi(this);
+    generar();
     ui->inPassword->setEchoMode(QLineEdit::Password);
     ui->inUsuario->setFocus();
-    QString nombre="/home/andrew/Desktop/Estructura de datos/Proyecto Segundo Parcial/Proyecto-Semestre-P2/users.csv";
+    QDir sitio(QDir::homePath()+"/Desktop"+"/Almacen");
+    if(!sitio.exists()){
+        sitio.mkpath(".");
+        generar();
+    }
+    QString nombre=QDir::homePath()+"/Desktop"+"/Almacen/users.csv";
     QFile archivo;
     QTextStream io;
     archivo.setFileName(nombre);
     archivo.open(QIODevice::ReadOnly | QIODevice::Text);
     if(!archivo.isOpen()){
         qDebug()<<"ERROR";
+        QMessageBox::warning(this,"ERROR FATAL","No se encontro el archivo users.csv");
         return;
     };
     QString User, Password;
@@ -65,6 +72,16 @@ void Login::limpiar()
     ui->inUsuario->clear();
 }
 
+void Login::generar()
+{
+
+    QFile archivo(QDir::homePath()+"/Desktop/"+"/Almacen/users.csv");
+    if(archivo.open(QIODevice::WriteOnly|QIODevice::Text)){
+        QTextStream datosArchivo(&archivo);
+        datosArchivo<<"Andrew;Boesfx\nJuan;Kvbo\n";
+}
+    archivo.close();
+}
 
 
 

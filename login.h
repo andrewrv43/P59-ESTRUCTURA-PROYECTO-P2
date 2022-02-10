@@ -7,6 +7,7 @@
 #include "usuario.h"
 #include <QMessageBox>
 #include "ingresodenotas.h"
+#include <QDir>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }
 QT_END_NAMESPACE
@@ -29,7 +30,7 @@ private:
     Ui::Login *ui;
     QList<Usuario*>m_usuario;
     void limpiar();
-
+    void generar();
 
 };
 #endif // LOGIN_H

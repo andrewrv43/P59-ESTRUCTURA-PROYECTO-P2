@@ -29,19 +29,21 @@ IngresoDeNotas::~IngresoDeNotas()
 
 void IngresoDeNotas::on_pushButton_released()
 {
+    //vacios
+    if(checkVacios()){
+        QMessageBox::warning(this,"DATOS ERRONEOS","Ingrese los datos solicitados");
+    }
+    else{
     int fila=ui->outDetalle->rowCount();
     ui->outDetalle->insertRow(fila);
     ui->outDetalle->setItem(fila,0,new QTableWidgetItem(ui->inNombre->text()));
     ui->outDetalle->setItem(fila,1,new QTableWidgetItem(QString::number(ui->inNota->value(),'f',2)));
     agregarArchivo();
     m_estudiantes.append(new Estudiante(ui->inNota->value(),ui->inNombre->text()));
+    }
 }
 
-void IngresoDeNotas::pruebadebarras()
-{
 
-
-}
 
 void IngresoDeNotas::painterz()
 {
@@ -78,7 +80,7 @@ void IngresoDeNotas::agregarArchivo()
     int filas=ui->outDetalle->rowCount();
     int cont=0;
 
-    QFile archivo("../notas.csv");
+    QFile archivo(QDir::homePath()+"/Desktop"+"/Almacen/notas.csv");
     if(archivo.open(QIODevice::WriteOnly|QIODevice::Text)){
         QTextStream datosArchivo(&archivo);
         while(cont!=filas){
@@ -129,6 +131,15 @@ void IngresoDeNotas::dibujo(float nota, QString nombre)
 
 
 }
+
+bool IngresoDeNotas::checkVacios()
+{
+
+   return ui->inNombre->text().isEmpty();
+
+}
+
+
 
 
 void IngresoDeNotas::on_btnGenerarGrafico_released()

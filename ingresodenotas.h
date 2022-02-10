@@ -33,7 +33,7 @@ private slots:
     void on_btnLineaPromedio_released();
 
 private:
-    void pruebadebarras();
+
     Ui::IngresoDeNotas *ui;
     void painterz();
     QPixmap pixmap;
@@ -44,6 +44,7 @@ private:
     QList<Estudiante*>m_estudiantes;
     void dibujo(float nota,QString nombre);
     int separador;
+    bool checkVacios();
 };
 
 #endif // INGRESODENOTAS_H
